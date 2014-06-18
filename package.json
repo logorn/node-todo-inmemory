@@ -1,0 +1,17 @@
+{
+  "name": "node-todo",
+  "version": "0.1.0",
+  "description": "Node Todo",
+  "main": "server.js",
+  "repository": "",
+  "author": "",
+  "license": "BSD",
+  "dependencies": {
+    "cors": "2.3.1",
+    "express": "~3.3.8",
+    "lodash": "~2.4"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
