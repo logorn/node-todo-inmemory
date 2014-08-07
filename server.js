@@ -6,12 +6,12 @@ var _ = require('lodash');
 
 
 app.configure(function () {
-  
+
  // Request body parsing middleware should be above methodOverride
   app.use(express.bodyParser());
   app.use(express.urlencoded());
   app.use(express.json());
-  
+
   app.use(cors());
 
   app.use(app.router);
@@ -37,9 +37,8 @@ app.get('/api/todos', function(req, res) {
 });
 
 app.post('/api/todos', function(req, res) {
-  console.log(req.body);
   var todo = {
-    id: req.body.id,
+    id: _.max(todos, 'id').id,
     name: req.body.name,
     completed: req.body.completed
   };
@@ -60,7 +59,7 @@ app.put('/api/todos/:id', function(req, res) {
     todo.name = req.body.name;
     todo.completed = req.body.completed;
     res.send(200, todo);
-    
+
   }
 });
 
@@ -71,7 +70,7 @@ app.get('/api/todos/:id', function(req, res) {
     res.send(404);
   } else {
     res.send(200, todo);
-    
+
   }
 });
 
@@ -83,7 +82,7 @@ app.delete('/api/todos/:id', function(req, res) {
   } else {
 
     todos.splice(idx, 1);
-    res.send(200, todos);  
+    res.send(200, todos);
   }
 
 });
